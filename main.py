@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_crudrouter import MemoryCRUDRouter as CRUDRouter
 
-from api.v1.rbac import router  # 假设你的路由在 app/api.py 中
+from api.v1.role_api import role_router
+from api.v1.user_api import user_router
+from schemas.role import Role
+from schemas.user import User, UserCreate
 
 app = FastAPI(
     title="FastAPI",
@@ -21,8 +25,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(user_router)
+app.include_router(role_router)
 # 注册路由
-app.include_router(router)
+app.include_router(CRUDRouter(schema=User, create_schema=UserCreate))
+app.include_router(CRUDRouter(schema=Role))
 
 
 @app.get("/")

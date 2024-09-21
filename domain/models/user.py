@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @version        : 1.0
 # @Create Time    : 2022/7/7 13:41
-# @File           : user.py
+# @File           : user_api.py
 # @IDE            : PyCharm
 # @desc           : 用户模型
 
