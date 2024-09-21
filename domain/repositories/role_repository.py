@@ -1,0 +1,1 @@
+# app/domain/repositories/role_repository.py
